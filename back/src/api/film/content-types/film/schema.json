@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "films",
+  "info": {
+    "singularName": "film",
+    "pluralName": "films",
+    "displayName": "film",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titre": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "dateSortie": {
+      "type": "date"
+    },
+    "duree": {
+      "type": "integer"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::categorie.categorie",
+      "mappedBy": "films"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "films"
+    }
+  }
+}

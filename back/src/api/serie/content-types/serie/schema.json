@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "series",
+  "info": {
+    "singularName": "serie",
+    "pluralName": "series",
+    "displayName": "serie",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titre": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "dateSortie": {
+      "type": "date"
+    },
+    "saisons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::saison.saison",
+      "mappedBy": "serie"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::categorie.categorie",
+      "mappedBy": "series"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "series"
+    }
+  }
+}
