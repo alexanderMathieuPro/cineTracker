@@ -790,6 +790,7 @@ export interface ApiFilmFilm extends Schema.CollectionType {
       'manyToMany',
       'plugin::users-permissions.user'
     >;
+    cover: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::film.film', 'oneToOne', 'admin::user'> &
