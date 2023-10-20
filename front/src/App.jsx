@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Login, { LoginAction } from "./views/Login";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import CreateFilm, { CreateFilmAction } from "./views/CreateFilm";
+import FilmDetail from "./views/FilmDetail";
 
 const routes = createBrowserRouter([
   {
@@ -26,9 +27,32 @@ const routes = createBrowserRouter([
     action: LoginAction
   },
   {
+    path: '/film/:id',
+    element: <ProtectedRoutes><FilmDetail /></ProtectedRoutes>,
+    loader: async ({params}) => {
+      const filmId = params.id;
+      const film = await fetch(`http://localhost:1337/api/films/${filmId}`, {
+        method: "GET", 
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+      }).then((res) => res.json());
+      return film;
+    }
+  },
+  {
     path: '/films/create',
     element: <ProtectedRoutes><CreateFilm /></ProtectedRoutes>,
-    action: CreateFilmAction
+    action: CreateFilmAction,
+    loader: async () => {
+      const data = await fetch("http://localhost:1337/api/categories", {
+        method: "GET", 
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+      }).then((res) => res.json());
+      return data;
+    }
   }
 ])
 function App() {
