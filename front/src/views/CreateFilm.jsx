@@ -1,4 +1,4 @@
-import { Form, useActionData, useLoaderData } from "react-router-dom";
+import { Form, redirect, useActionData, useLoaderData, useNavigate } from "react-router-dom";
 
 export const CreateFilmAction = async ({request}) => {
     const formData = await request.formData();
@@ -32,7 +32,8 @@ export const CreateFilmAction = async ({request}) => {
             }
         })
     })
-    return data;
+    return redirect('/');
+    
 }
 
 const CreateFilm = () => {

@@ -38,11 +38,19 @@
       "mappedBy": "films"
     },
     "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "images": {
       "allowedTypes": [
         "images"
       ],
       "type": "media",
-      "multiple": false
+      "multiple": true
     }
   }
 }

@@ -791,6 +791,7 @@ export interface ApiFilmFilm extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     cover: Attribute.Media;
+    images: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::film.film', 'oneToOne', 'admin::user'> &
